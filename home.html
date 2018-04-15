@@ -18,10 +18,15 @@
         <link href="css/logo-nav.css" rel="stylesheet">
         <script src="jquery/jquery.min.js"></script>
         <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="jsscript/validator.js"></script>
+        <script src="jsscript/contact.js"></script>
         <style type="text/css">
             body{
                 position: relative;
                 padding-top: 150px;
+            }
+            label {
+                color: #333;
             }
         </style>
 
@@ -123,7 +128,7 @@
                 <div class="row margin-btm-20">
                     <div class="col-md-2">
                         <div class="services-icon">
-                            <img src="img/prod_3.jpg" alt="" width="120" height="100"> </div></div>
+                            <img src="prod_img/prod_3.jpg" alt="" width="120" height="100"> </div></div>
                     <div class="col-md-10">
                         <div class="services-info">
                             <h3>Carton Box</h3>
@@ -135,7 +140,7 @@
                 <div class="row margin-btm-20">
                     <div class="col-md-2">
                         <div class="services-icon">
-                            <img src="img/prod_2.png" alt="" width="120" height="100"> </div></div>
+                            <img src="prod_img/prod_2.jpg" alt="" width="120" height="100"> </div></div>
                     <div class="col-md-10">
                         <div class="services-info">
                             <h3>Scoring Carton</h3>
@@ -146,7 +151,7 @@
                 <div class="row margin-btm-20">
                     <div class="col-md-2">
                         <div class="services-icon">
-                            <img src="img/prod_1.jpg" alt="" width="120" height="100"> </div></div>
+                            <img src="prod_img/prod_1.jpg" alt="" width="120" height="100"> </div></div>
                     <div class="col-md-10">
                         <div class="services-info">
                             <h3>Corrugated Roll</h3>
@@ -198,64 +203,58 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <h4>Get in touch</h4>
-                                <form name="sentMessage" id="contactForm" method="post" novalidate="" action="sendEnquiry.php">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row control-group">
-                                                <div class="form-group col-xs-12 controls">
-                                                    <label>Name<span>*</span></label>
-                                                    <input class="form-control" id="name" name="name" data-validation-required-message="Please enter your name." required="" placeholder="Name" type="text">
-                                                    <p class="help-block"></p>
+                                <form id="contact-form" method="post" action="contact.php" role="form">
+
+                                    <div class="messages"></div>
+
+                                    <div class="controls">
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="form_name">Firstname *</label>
+                                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="form_lastname">Lastname *</label>
+                                                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="col-md-6">
-                                            <div class="row control-group">
-                                                <div class="form-group col-xs-12 controls">
-                                                    <label>Company Name<span>*</span></label>
-                                                    <input class="form-control" id="company" name="company" data-validation-required-message="Please enter your Company." required="" placeholder="Company Name" type="text">
-                                                    <p class="help-block"></p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="form_email">Email *</label>
+                                                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="form_phone">Phone</label>
+                                                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone">
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="col-md-6">
-                                            <div class="row control-group">
-                                                <div class="form-group col-xs-12 controls">
-                                                    <label>Phone No<span>*</span></label>
-                                                    <input class="form-control" id="phone" name="phone" data-validation-required-message="Please enter your Phone." required="" placeholder="Phone No" type="text">
-                                                    <p class="help-block"></p>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="form_message">Message *</label>
+                                                    <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="row control-group">
-                                                <div class="form-group col-xs-12 controls">
-                                                    <label>Email Address<span>*</span></label>
-                                                    <input class="form-control" id="email" name="email" data-validation-required-message="Please enter your email address." required="" placeholder="Email Address" type="email">
-                                                    <p class="help-block"></p>
-                                                </div>
+                                            <div class="col-md-12">
+                                                <input type="submit" class="btn btn-success btn-send" value="Send message">
                                             </div>
                                         </div>
                                     </div>
 
-
-                                    <div class="row control-group">
-                                        <div class="form-group col-xs-12 controls">
-                                            <label>Message<span>*</span></label>
-                                            <textarea id="message" class="form-control" rows="5" data-validation-required-message="Please enter a message." required="" placeholder="Message"></textarea>
-                                            <p class="help-block"></p>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div id="success"></div>
-                                    <div class="row">
-                                        <div class="form-group col-xs-12">
-                                            <button type="submit" class="btn btn-theme-color btn-lg">Send Message</button> 
-                                        </div>
-                                    </div>
                                 </form>
                                 <!--contact form--></div>
                             <div class="col-md-4">
