@@ -33,7 +33,7 @@ $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
 $mail->Host = "smtp.gmail.com";      // sets GMAIL as the SMTP server
 $mail->Port = 465;                   // set the SMTP port for the GMAIL server
 $mail->Username = "bhawar.rahul7@gmail.com";  // GMAIL username
-$mail->Password = "9923830564@r";            // GMAIL password
+$mail->Password = "";            // GMAIL password
 
 $mail->SetFrom('bhawar.rahul7@gmail.com', 'PRSPS');
 
